@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:saidin_quiz_app/app/constants.dart';
+import 'package:saidin_quiz_app/app/pages/quiz/quiz_page.dart';
 
 class WellComePage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -8,27 +11,28 @@ class WellComePage extends StatelessWidget {
         body: Stack(
       children: [
         Container(
-          height: size.height,
+          height: double.infinity,
           width: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.deepPurple,
-                Colors.purpleAccent.withOpacity(0.4),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
+          //   decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //       colors: [
+          //         Colors.deepPurple,
+          //         Colors.purpleAccent.withOpacity(0.4),
+          //       ],
+          //       begin: Alignment.topRight,
+          //       end: Alignment.bottomLeft,
+          //     ),
+          //   ),
+          child: SvgPicture.asset('assets/icons/bg.svg', fit: BoxFit.cover),
         ),
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Spacer(),
+                Spacer(flex: 2), // it will take 2/6 spaces
                 Text(
                   "Let's Play Sadino Questions !",
                   // textDirection: TextDirection.rtl,
@@ -49,7 +53,7 @@ class WellComePage extends StatelessWidget {
                         color: Colors.white24,
                       ),
                 ),
-                Spacer(),
+                Spacer(), //1/6
                 TextField(
                   style: TextStyle(
                     color: Colors.white54,
@@ -57,9 +61,9 @@ class WellComePage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                   decoration: InputDecoration(
-                    fillColor: Colors.deepPurple.withOpacity(0.4),
+                    fillColor: Color(0xFF1C2341),
                     filled: true,
-                    hintText: 'Oi , seu aqui !',
+                    hintText: 'Oi , Nome seu aqui !',
                     hintStyle: TextStyle(
                       color: Colors.white24,
                       fontSize: 18,
@@ -71,13 +75,15 @@ class WellComePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Spacer(),
+                Spacer(), // it will take 1/6
                 InkWell(
-                  onTap: () {
-                    showAboutDialog(context: context);
-                  },
+                  onTap: () => Get.to(
+                    () => QuizScreen(),
+                    curve: Curves.easeInCubic,
+                    duration: Duration(microseconds: 500),
+                  ),
                   child: Container(
-                    padding: EdgeInsets.all(kDefaultPadding * 0.75),
+                    padding: EdgeInsets.all(kDefaultPadding * 0.75), //15
                     width: double.infinity,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -94,7 +100,7 @@ class WellComePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Spacer(),
+                Spacer(flex: 2), //it will take 2/6
               ],
             ),
           ),
