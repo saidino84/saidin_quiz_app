@@ -9,10 +9,10 @@ class Question {
       required this.question,
       required this.options});
 
-  bool is_right(int index) => this.options[index] == answer;
+  bool is_right(int index) => index == answer;
 }
 
-const List sample_data = [
+const List simple_questions = [
   {
     'id': 1,
     'question':
@@ -44,10 +44,13 @@ const List sample_data = [
     'question': 'A memory location that holds a sigle letter or number.',
     'options': [
       'Double',
-      'Int'
-          'Char',
+      'Int',
+      'Char',
       'Word',
       'String',
+      'Substring',
+      'Querry',
+      'ML'
     ],
     'answer_index': 2,
   },
@@ -56,8 +59,8 @@ const List sample_data = [
     'question': 'Quantos anos tem a a sogunda sorte/filha de saidino?.',
     'options': [
       '2',
-      'tres'
-          '5',
+      'tres',
+      '5',
       '3',
       'quatro',
     ],

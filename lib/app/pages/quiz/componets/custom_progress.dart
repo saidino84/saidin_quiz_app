@@ -56,7 +56,7 @@ class CustomProgressBar extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('${controller.animation.value} sec'),
+                      Text('${(controller.animation.value * 60).round()} sec'),
                       // Icon(
                       //   Icons.record_voice_over,
                       //   color: Colors.amberAccent,
@@ -68,33 +68,6 @@ class CustomProgressBar extends StatelessWidget {
               ],
             );
           }),
-    );
-  }
-}
-
-class MainBg extends StatelessWidget {
-  const MainBg({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: size.height,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.deepPurple,
-            Colors.purpleAccent.withOpacity(0.4),
-          ],
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-        ),
-      ),
     );
   }
 }
