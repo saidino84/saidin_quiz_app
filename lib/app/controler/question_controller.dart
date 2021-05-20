@@ -4,7 +4,7 @@ import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:saidin_quiz_app/app/models/Questions.dart';
 
-class QuestioCotroller extends GetxController
+class QuestionCotroller extends GetxController
     with SingleGetTickerProviderMixin {
   //lets aimate our progress bar
   late Animation _animation;
@@ -26,8 +26,12 @@ class QuestioCotroller extends GetxController
   //todo===========  ALOGICA DE PEGAR O ITEM CLICADO E O CERTO DO ERRAD ===========
   bool _isAnswered = false;
   bool get isAnswered => this._isAnswered;
+
   late int _correctAnswr;
   int get corectAnswr => this._correctAnswr;
+
+  late int _selectedAnswr;
+  int get selectedAnswr => this._selectedAnswr;
 
   RxInt _questionNumber = 1.obs;
   RxInt get questionNumber => this._questionNumber;
@@ -53,5 +57,18 @@ class QuestioCotroller extends GetxController
     _animcontroller.forward();
     // update();
     super.onInit();
+  }
+
+  void checkAnswer(Question question, int selectedIndex) {
+    //becouise once user press any option it will run
+    _isAnswered = true;
+    _correctAnswr = question.answer;
+    _selectedAnswr = selectedIndex;
+
+    // if (_correctAnswr == _selectedAnswr) _numOfCorrectAnswr++;
+
+    //it will stop athe conter
+    _animcontroller.stop();
+    update();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:saidin_quiz_app/app/constants.dart';
+import 'package:saidin_quiz_app/app/controler/question_controller.dart';
 import 'package:saidin_quiz_app/app/models/Questions.dart';
 
 import 'option.dart';
@@ -15,6 +16,7 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var qz_controller = Get.find<QuestionCotroller>();
     return InkWell(
       child: Container(
         padding: EdgeInsets.all(kDefaultPadding),
@@ -64,15 +66,8 @@ class QuestionCard extends StatelessWidget {
                 itemBuilder: (item, index) => OptionCard(
                   index: index,
                   text: question.options[index],
-                  press: () {
-                    var is_right = question.is_right(index);
-
-                    Get.defaultDialog(
-                      title: 'Resultado',
-                      content: Text(
-                          'A resposta é ${question.options[index]}? :${is_right ? "SIM" : "Nao"} '),
-                    );
-                  },
+                  press: () => qz_controller.checkAnswer(
+                      question, index), //heckAns(question: index),
                 ),
               ),
             ),

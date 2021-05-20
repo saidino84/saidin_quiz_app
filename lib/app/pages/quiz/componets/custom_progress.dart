@@ -22,8 +22,8 @@ class CustomProgressBar extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: GetBuilder<QuestioCotroller>(
-          init: QuestioCotroller(),
+      child: GetBuilder<QuestionCotroller>(
+          init: QuestionCotroller(),
           builder: (controller) {
             print(controller.animation.value);
             return Stack(

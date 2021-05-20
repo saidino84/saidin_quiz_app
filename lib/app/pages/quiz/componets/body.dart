@@ -15,7 +15,7 @@ class Body extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  QuestioCotroller _qz_cotroller = Get.put(QuestioCotroller());
+  QuestionCotroller _qz_cotroller = Get.put(QuestionCotroller());
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -82,6 +82,7 @@ class Body extends StatelessWidget {
                     }),
               ),
               // ListOptions(),
+              SizedBox(height: 23),
             ],
           ),
         ),
