@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:saidin_quiz_app/app/constants.dart';
+import 'package:saidin_quiz_app/app/controler/app_controller.dart';
 import 'package:saidin_quiz_app/app/pages/quiz/quiz_page.dart';
 
 class WellComePage extends StatelessWidget {
+  var controller = Get.put<AppController>(AppController());
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
@@ -55,26 +57,31 @@ class WellComePage extends StatelessWidget {
                 ),
                 Spacer(), //1/6
                 TextField(
-                  style: TextStyle(
-                    color: Colors.white54,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  decoration: InputDecoration(
-                    fillColor: Color(0xFF1C2341),
-                    filled: true,
-                    hintText: 'Oi , Nome seu aqui !',
-                    hintStyle: TextStyle(
-                      color: Colors.white24,
+                    keyboardAppearance: Brightness.light,
+                    controller: controller.edit_controler,
+                    style: TextStyle(
+                      color: Colors.white54,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide.none,
+                    decoration: InputDecoration(
+                      fillColor: Color(0xFF1C2341),
+                      filled: true,
+                      hintText: 'Oi , Nome seu aqui !',
+                      hintStyle: TextStyle(
+                        color: Colors.white24,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide.none,
+                      ),
                     ),
-                  ),
-                ),
+                    onEditingComplete: () {
+                      controller.saveUser();
+                      // Get.to(QuizScreen());
+                    }),
                 Spacer(), // it will take 1/6
                 InkWell(
                   onTap: () => Get.to(

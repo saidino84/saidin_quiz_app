@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:saidin_quiz_app/app/controler/app_controller.dart';
 
 import 'componets/body.dart';
 
 class QuizScreen extends StatelessWidget {
+  var controller = Get.find<AppController>();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -20,6 +22,13 @@ class QuizScreen extends StatelessWidget {
             ),
           ),
           actions: [
+            Text(
+              '${controller.box.read("user_name")}',
+              style: TextStyle(
+                fontSize: 12,
+                decoration: TextDecoration.underline,
+              ),
+            ),
             TextButton(
               child: Text('skip'),
               onPressed: () {},
