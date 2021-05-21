@@ -319,3 +319,5 @@ class OptionCard extends StatelessWidget {
 #Acompanhe RESULTADO QUANDO OR CLICADO
 ![Preview](/animation4.gif)
 ![Preview](/animation5.gif)
+//Quando pego GetRightColor() pra o container com 26 de size e radius de 50 no Options
+1[Preview](/get_right-color.gif)
