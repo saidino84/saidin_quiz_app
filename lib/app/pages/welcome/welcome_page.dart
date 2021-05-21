@@ -80,15 +80,18 @@ class WellComePage extends StatelessWidget {
                     ),
                     onEditingComplete: () {
                       controller.saveUser();
-                      // Get.to(QuizScreen());
+                      Get.to(QuizScreen());
                     }),
                 Spacer(), // it will take 1/6
                 InkWell(
-                  onTap: () => Get.to(
-                    () => QuizScreen(),
-                    curve: Curves.easeInCubic,
-                    duration: Duration(microseconds: 500),
-                  ),
+                  onTap: () {
+                    controller.saveUser();
+                    Get.to(
+                      () => QuizScreen(),
+                      curve: Curves.elasticIn,
+                      duration: Duration(microseconds: 500),
+                    );
+                  },
                   child: Container(
                     padding: EdgeInsets.all(kDefaultPadding * 0.75), //15
                     width: double.infinity,

@@ -321,3 +321,39 @@ class OptionCard extends StatelessWidget {
 ![Preview](/animation5.gif)
 //Quando pego GetRightColor() pra o container com 26 de size e radius de 50 no Options
 1[Preview](/get_right-color.gif)
+
+#Adicionado o getRightIcon para adicionar IconData quando so for acionada
+code:
+```dart
+//dentro do getBuilder adiciono o metodo
+//Pegando o icon certo pra o container vermelho
+          IconData getTheRightIcon() {
+            return getTheRightColor() == kRedColor ? Icons.close : Icons.done;
+          }
+
+              Container(
+                width: 26,
+                height: 26,
+                decoration: BoxDecoration(
+                  //se acor retornada com a uncao getRightColor\
+                  // for gray vou esconder a bolinha [com color TRANSPARENT]
+                  //caso nao tera ACOR retornada k é a zul
+                  color: getTheRightColor() == kGrayColor
+                      ? Colors.transparent
+                      : getTheRightColor(),
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(
+                    color: getTheRightColor(), //Colors.grey,
+                  ),
+                ),
+                child: getTheRightColor() == kGrayColor
+                    ? null
+                    : Icon(getTheRightIcon(), size: 16),
+              ),
+            ],
+          ),
+            ),
+
+``` 
+[ * ] Resultado
+![Preview]/(/getRightIcon.gif)

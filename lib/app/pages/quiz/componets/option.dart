@@ -21,6 +21,8 @@ class OptionCard extends StatelessWidget {
     return GetBuilder<QuestionCotroller>(
         init: QuestionCotroller(),
         builder: (qzcontroller) {
+          //Pegando Cor pra o item clicado caso seja certo verde otherwise vermelho
+          // se nao for clicado e nao é certo tera o default kGrayColor
           Color getTheRightColor() {
             //todo [fn] exta funcao verifica se
             if (qzcontroller.isAnswered) {
@@ -32,6 +34,11 @@ class OptionCard extends StatelessWidget {
               }
             }
             return kGrayColor;
+          }
+
+          //Pegando o icon certo pra o container vermelho
+          IconData getTheRightIcon() {
+            return getTheRightColor() == kRedColor ? Icons.close : Icons.done;
           }
 
           return InkWell(
@@ -71,6 +78,9 @@ class OptionCard extends StatelessWidget {
                         color: getTheRightColor(), //Colors.grey,
                       ),
                     ),
+                    child: getTheRightColor() == kGrayColor
+                        ? null
+                        : Icon(getTheRightIcon(), size: 16),
                   ),
                 ],
               ),
