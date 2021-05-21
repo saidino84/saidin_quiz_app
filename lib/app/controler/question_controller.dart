@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:saidin_quiz_app/app/models/Questions.dart';
@@ -36,7 +34,7 @@ class QuestionCotroller extends GetxController
   RxInt _questionNumber = 1.obs;
   RxInt get questionNumber => this._questionNumber;
 
-  late int _numOfCorrectAnswr;
+  late int _numOfCorrectAnswr = 0;
   int get numCorrectAns => this._numOfCorrectAnswr;
 
 //called immediately after the widget is allocated memory
@@ -65,8 +63,7 @@ class QuestionCotroller extends GetxController
     _correctAnswr = question.answer;
     _selectedAnswr = selectedIndex;
 
-    // if (_correctAnswr == _selectedAnswr) _numOfCorrectAnswr++;
-
+    if (_correctAnswr == _selectedAnswr) _numOfCorrectAnswr++;
     //it will stop athe conter
     _animcontroller.stop();
     update();

@@ -44,7 +44,7 @@ class CustomProgressBar extends StatelessWidget {
                      **/
                     width: constraints.maxWidth * controller.animation.value,
                     decoration: BoxDecoration(
-                      gradient: KPrimaryGradient,
+                      gradient: kPrimaryGradient,
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),

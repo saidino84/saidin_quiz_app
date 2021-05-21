@@ -94,7 +94,7 @@ class WellComePage extends StatelessWidget {
                     width: double.infinity,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      gradient: KPrimaryGradient,
+                      gradient: kPrimaryGradient,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(

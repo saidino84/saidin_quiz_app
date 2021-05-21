@@ -21,6 +21,19 @@ class OptionCard extends StatelessWidget {
     return GetBuilder<QuestionCotroller>(
         init: QuestionCotroller(),
         builder: (qzcontroller) {
+          Color getTheRightColor() {
+            //todo [fn] exta funcao verifica se
+            if (qzcontroller.isAnswered) {
+              if (index == qzcontroller.corectAnswr) {
+                return kGreenColor;
+              } else if (index == qzcontroller.selectedAnswr &&
+                  qzcontroller.selectedAnswr != qzcontroller.corectAnswr) {
+                return kRedColor;
+              }
+            }
+            return kGrayColor;
+          }
+
           return InkWell(
             onTap: press,
             child: Container(
@@ -31,7 +44,7 @@ class OptionCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
-                  color: kGrayColor,
+                  color: getTheRightColor(),
                 ),
               ),
               child: Row(
@@ -40,17 +53,22 @@ class OptionCard extends StatelessWidget {
                   Text(
                     '${index + 1}. $text',
                     style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: Colors.grey,
+                          color: getTheRightColor(),
                         ),
                   ),
                   Container(
                     width: 26,
                     height: 26,
                     decoration: BoxDecoration(
-                      // color: Colors.grey,
+                      //se acor retornada com a uncao getRightColor\
+                      // for gray vou esconder a bolinha [com color TRANSPARENT]
+                      //caso nao tera ACOR retornada k é a zul
+                      color: getTheRightColor() == kGrayColor
+                          ? Colors.transparent
+                          : getTheRightColor(),
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(
-                        color: Colors.grey,
+                        color: getTheRightColor(), //Colors.grey,
                       ),
                     ),
                   ),
